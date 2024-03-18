@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <title>Title</title>
+    <style>
+        body {
+            background: rgba(0, 0, 0, 0.7) url({% static 'slika.jpg' %});
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+             background-blend-mode: darken;
+        }
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.header{
+    width: 100%;
+    background-color: rgba(0,0,0,.4);
+}
+
+.header ul{
+    text-align: center;
+}
+
+.header ul li{
+    list-style: none;
+    display: inline-block;
+}
+
+.header ul li a{
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #b1d726;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 25px;
+    transition: all ease 0.5s;
+}
+
+.header ul li a:hover{
+    background-color: rgba(246, 111, 114, 0.55);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 42%;
+    margin-top: 30px;
+}
+
+p label{
+    color: white;
+}
+
+form{
+    width:1000px;
+    margin: auto;
+}
+
+
+
+    </style>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $("id_date_time").attr("type", "datetime-local");
+        $("#rest").click(function (event) {
+            x_coordinate = event.clientX //x koordinata na klikot
+            y_coordinate = event.clientY // y koordinata na klikot
+            console.log(x_coordinate) //pecatenje na x koordinata (desen klik vo browser, pa inspect, pa gore ima console pishuva)
+            console.log(y_coordinate)
+            if(x_coordinate>=820 && x_coordinate<=896 && y_coordinate>=160 && y_coordinate<=233){
+                $("#id_table").val("1")
+                console.log("Table 1") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=660 && x_coordinate<=740 && y_coordinate>=233 && y_coordinate<=314){
+            $("#id_table").val("2")
+                console.log("Table 2") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=740 && x_coordinate<=820 && y_coordinate>=233 && y_coordinate<=314){
+            $("#id_table").val("3")
+                console.log("Table 3") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=820 && x_coordinate<=900 && y_coordinate>=233 && y_coordinate<=314){
+            $("#id_table").val("4")
+                console.log("Table 4") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=660 && x_coordinate<=740 && y_coordinate>=314 && y_coordinate<=400){
+                        $("#id_table").val("5")
+                console.log("Table 5") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=740 && x_coordinate<=820 && y_coordinate>=314 && y_coordinate<=400){
+                        $("#id_table").val("6")
+                console.log("Table 6") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=820 && x_coordinate<=900 && y_coordinate>=314 && y_coordinate<=400){
+                        $("#id_table").val("7")
+                console.log("Table 7") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=329 && x_coordinate<=376 && y_coordinate>=215 && y_coordinate<=285){
+                        $("#id_table").val("8")
+                console.log("Table 8") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+            if(x_coordinate>=393 && x_coordinate<=424 && y_coordinate>=317 && y_coordinate<=343){
+                        $("#id_table").val("9")
+                console.log("Table 9") //go ogranichuvame x vo granici 30 do 60 i isto za y
+            }
+
+        })
+    })
+</script>
+<body>
+<div class="back">
+    <div class="header">
+            <ul>
+                <li><a href="{% url 'rest1' %}">Rest1</a></li>
+                <li><a href="{% url 'rest2' %}">Rest2</a></li>
+                <li><a href="{% url 'rest3' %}">Rest3</a></li>
+                <li><a href="{% url 'rest4' %}">Rest4</a></li>
+            </ul>
+    </div>
+<img id="rest" src="{% static '1.png' %}" alt="slika" class="center">
+</div>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+<button class="btn btn-success">Submit</button>
+</form>
+</body>
+<script>
+    $(document).ready(function () {
+    console.log("primer")
+    $("#id_date_time").attr("type", "datetime-local");})
+    </script>
+</html>
